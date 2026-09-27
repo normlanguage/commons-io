@@ -1,0 +1,29 @@
+import commons.io.fileUtilsDeleteQuietly
+import commons.io.fileUtilsReadFileToStringJavaFileAndCharset
+import commons.io.fileUtilsWriteStringToFileJavaFileAndStringAndCharset
+import commons.io.filenameUtilsGetExtension
+import std.filesystem.FileWriteMode
+import std.filesystem.FileWriter
+import std.filesystem.Path
+import std.filesystem.openWrite
+
+main() {
+  Path file = Path(value: "sample-output.txt")
+  FileWriter claim = openWrite(path: file, mode: FileWriteMode.CreateNew)
+  try {
+    claim.close()
+    fileUtilsWriteStringToFileJavaFileAndStringAndCharset(
+      arg0: file,
+      arg1: "Hello from Norm",
+      arg2: "UTF-8"
+    )
+    printLine(filenameUtilsGetExtension("report.txt")!!)
+    printLine(fileUtilsReadFileToStringJavaFileAndCharset(arg0: file, arg1: "UTF-8")!!)
+  } finally {
+    fileUtilsDeleteQuietly(arg0: file)
+  }
+}
+
+Module module() {
+  module(dependencies: [dependency(repository: "github", name: "commons.io", version: 2)])
+}

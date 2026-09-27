@@ -1,0 +1,52 @@
+import commons.io.fileUtilsContentEquals
+import commons.io.fileUtilsDeleteQuietly
+import commons.io.fileUtilsReadFileToStringJavaFileAndCharset
+import commons.io.fileUtilsWriteStringToFileJavaFileAndStringAndCharset
+import std.filesystem.FileWriteMode
+import std.filesystem.FileWriter
+import std.filesystem.Path
+import std.filesystem.openWrite
+
+main() {
+  Path current = Path(value: "current-report.txt")
+  Path snapshot = Path(value: "snapshot-report.txt")
+  String original = "Norm release 1"
+
+  FileWriter currentClaim = openWrite(path: current, mode: FileWriteMode.CreateNew)
+  try {
+    currentClaim.close()
+    FileWriter snapshotClaim = openWrite(path: snapshot, mode: FileWriteMode.CreateNew)
+    try {
+      snapshotClaim.close()
+      fileUtilsWriteStringToFileJavaFileAndStringAndCharset(
+        arg0: current,
+        arg1: original,
+        arg2: "UTF-8"
+      )
+      fileUtilsWriteStringToFileJavaFileAndStringAndCharset(
+        arg0: snapshot,
+        arg1: original,
+        arg2: "UTF-8"
+      )
+      printLine(fileUtilsContentEquals(arg0: current, arg1: snapshot))
+
+      fileUtilsWriteStringToFileJavaFileAndStringAndCharset(
+        arg0: current,
+        arg1: "Norm release 2",
+        arg2: "UTF-8"
+      )
+      printLine(fileUtilsContentEquals(arg0: current, arg1: snapshot))
+      printLine(
+        fileUtilsReadFileToStringJavaFileAndCharset(arg0: snapshot, arg1: "UTF-8")!!
+      )
+    } finally {
+      fileUtilsDeleteQuietly(arg0: snapshot)
+    }
+  } finally {
+    fileUtilsDeleteQuietly(arg0: current)
+  }
+}
+
+Module module() {
+  module(dependencies: [dependency(repository: "github", name: "commons.io", version: 2)])
+}
