@@ -30,4 +30,4 @@ false
 Norm release 1
 ```
 
-API reference: [module.norm](../commons/io/module.norm) lists the exposed `FileUtils` and `FilenameUtils`. The module's `Main.norm` remains its own adapter integration entry point.
+API reference: [module.norm](../commons/io/module.norm) lists the exposed `FileUtils` and `FilenameUtils`. The [adapter acceptance example](../examples/sample/commons/io/Main.norm) exercises additional binding behavior.

@@ -1,0 +1,7 @@
+Module module() {
+  return module(
+    name: "sample.commons.io",
+    version: 1,
+    dependencies: [dependency(repository: "github", name: "commons.io", version: 3)]
+  )
+}

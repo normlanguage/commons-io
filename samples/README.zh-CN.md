@@ -30,4 +30,4 @@ false
 Norm release 1
 ```
 
-API 入口：[module.norm](../commons/io/module.norm) 列出公开的 `FileUtils` 和 `FilenameUtils`。`Main.norm` 仍是该适配器自身的集成入口。
+API 入口：[module.norm](../commons/io/module.norm) 列出公开的 `FileUtils` 和 `FilenameUtils`。[适配器验收示例](../examples/sample/commons/io/Main.norm)覆盖更多绑定行为。
