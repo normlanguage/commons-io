@@ -25,13 +25,15 @@ Void main() {
     fileUtilsReadFileToString(arg0: file, arg1: "UTF-8")!!
   )
   fileUtilsDeleteQuietly(arg0: file)
-  String? encoding = "UTF-8"`r`n  InputStream? input = ioUtilsToInputStream(arg0: "stream", arg1: encoding)
+  String? encoding = "UTF-8"
+  InputStream? input = ioUtilsToInputStream(arg0: "stream", arg1: encoding)
   if input != null {
     Bytes content = readAll(reader: input, maximumBytes: 16)
     printLine(decodeText(content: content, encoding: TextEncoding.Utf8))
     input.close()
   }
 }
+
 
 
 
