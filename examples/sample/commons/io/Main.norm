@@ -4,14 +4,7 @@ import commons.io.filenameUtilsGetExtension
 import commons.io.fileUtilsWriteStringToFile
 import commons.io.fileUtilsReadFileToString
 import commons.io.fileUtilsDeleteQuietly
-import commons.io.ioUtilsToInputStream
-
 import java.base.io.fileNew
-import std.io.Bytes
-import std.io.InputStream
-import std.io.TextEncoding
-import std.io.decodeText
-import std.io.readAll
 
 Void main() {
   printLine(filenameUtilsGetExtension("archive.nar") ?? "")
@@ -25,13 +18,6 @@ Void main() {
     fileUtilsReadFileToString(arg0: file, arg1: "UTF-8")!!
   )
   fileUtilsDeleteQuietly(arg0: file)
-  String? encoding = "UTF-8"
-  InputStream? input = ioUtilsToInputStream("stream", encoding)
-  if input != null {
-    Bytes content = readAll(reader: input, maximumBytes: 16)
-    printLine(decodeText(content: content, encoding: TextEncoding.Utf8))
-    input.close()
-  }
 }
 
 
