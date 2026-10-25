@@ -26,7 +26,7 @@ Void main() {
   )
   fileUtilsDeleteQuietly(arg0: file)
   String? encoding = "UTF-8"
-  InputStream? input = ioUtilsToInputStream(arg0: "stream", arg1: encoding)
+  InputStream? input = ioUtilsToInputStream("stream", encoding)
   if input != null {
     Bytes content = readAll(reader: input, maximumBytes: 16)
     printLine(decodeText(content: content, encoding: TextEncoding.Utf8))
