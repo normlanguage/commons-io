@@ -1,7 +1,7 @@
 Module module() {
   return module(
     name: "commons.io",
-    version: 3,
+    version: 4,
     exports: ["FileUtils", "FilenameUtils", "IOUtils"],
     binding: jarBinding(
       target: mavenJar(
