@@ -48,5 +48,5 @@ main() {
 }
 
 Module module() {
-  module(dependencies: [dependency(repository: "github", name: "commons.io", version: 3)])
+  module(dependencies: [dependency(repository: "github", name: "commons.io", version: 4)])
 }
